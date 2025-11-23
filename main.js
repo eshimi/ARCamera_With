@@ -312,4 +312,10 @@ downloadBtn.addEventListener('click', () => {
     link.download = `ar-motif-${Date.now()}.png`;
     link.href = capturedImage.src;
     link.click();
+
+    // Navigate to landing page after a short delay
+    setTimeout(() => {
+        showScreen('landing');
+        fileInput.value = ''; // Reset file input
+    }, 1000);
 });
