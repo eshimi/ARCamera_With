@@ -65,8 +65,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: flex-start;
+    padding: 3rem 2rem;
     position: relative;
     z-index: 1;
     text-align: center;
@@ -80,6 +80,7 @@ body {
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .orb {
@@ -265,6 +266,7 @@ body {
 /* How to Use Infographic */
 .how-to-use.infographic {
     margin-top: 4rem;
+    margin-bottom: 2rem;
     width: 100%;
     max-width: 600px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
