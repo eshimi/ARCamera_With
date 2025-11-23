@@ -302,6 +302,45 @@ shutterBtn.addEventListener('click', () => {
     showScreen('result');
 });
 
+// Long press to capture
+let longPressTimer = null;
+const cameraView = document.getElementById('camera-view');
+
+function capturePhoto() {
+    // Trigger the same capture logic as shutter button
+    shutterBtn.click();
+}
+
+cameraView.addEventListener('touchstart', (e) => {
+    // Only trigger if not touching the motif or controls
+    if (e.target === cameraFeed || e.target === cameraView) {
+        longPressTimer = setTimeout(() => {
+            // Visual feedback
+            cameraView.style.animation = 'flash 0.3s';
+            setTimeout(() => {
+                cameraView.style.animation = '';
+            }, 300);
+
+            capturePhoto();
+        }, 800); // 800ms long press
+    }
+});
+
+cameraView.addEventListener('touchend', () => {
+    if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
+    }
+});
+
+cameraView.addEventListener('touchmove', () => {
+    if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
+    }
+});
+
+
 // Result Actions
 retakeBtn.addEventListener('click', () => {
     showScreen('camera');
