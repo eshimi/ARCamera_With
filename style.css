@@ -22,7 +22,6 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow: hidden;
-    /* Prevent scroll on mobile */
     height: 100vh;
     width: 100vw;
 }
@@ -56,12 +55,21 @@ body {
 
 /* Landing */
 #landing {
-    justify-content: center;
-    align-items: center;
     background: #050505;
-    text-align: center;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.landing-scroll-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 2rem;
-    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
 .landing-bg {
@@ -141,6 +149,7 @@ body {
     font-weight: 700;
     line-height: 1;
     background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
@@ -366,7 +375,6 @@ body {
     height: 2px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     margin-top: 30px;
-    /* Align with icon center */
 }
 
 /* Mobile Responsive for Infographic */
@@ -580,6 +588,7 @@ body {
 
 .control-group input[type="range"] {
     flex: 1;
+    appearance: none;
     -webkit-appearance: none;
     background: rgba(255, 255, 255, 0.2);
     height: 4px;
@@ -611,7 +620,6 @@ body {
     background: white;
     border: 4px solid rgba(255, 255, 255, 0.3);
     background-clip: padding-box;
-    /* Creates the gap */
     cursor: pointer;
     transition: transform 0.1s;
 }
