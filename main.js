@@ -59,6 +59,17 @@ fileInput.addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    // Try to enter fullscreen to hide browser UI
+    try {
+        if (document.documentElement.requestFullscreen) {
+            await document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+            await document.documentElement.webkitRequestFullscreen();
+        }
+    } catch (err) {
+        console.log("Fullscreen request failed or denied:", err);
+    }
+
     showScreen('loading');
     loadingText.innerText = '準備中...';
     progressFill.style.width = '0%';
@@ -106,13 +117,28 @@ fileInput.addEventListener('change', async (e) => {
 });
 
 // 2. Camera
+// 2. Camera
+function getCameraConstraints() {
+    const isLandscape = window.innerWidth > window.innerHeight;
+    return {
+        video: {
+            facingMode: 'environment',
+            width: { ideal: isLandscape ? 1920 : 1080 },
+            height: { ideal: isLandscape ? 1080 : 1920 }
+        },
+        audio: false
+    };
+}
+
 async function startCamera() {
-    if (state.stream) return;
+    // Stop existing stream if any
+    if (state.stream) {
+        state.stream.getTracks().forEach(track => track.stop());
+        state.stream = null;
+    }
+
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'environment', width: { ideal: 1920 }, height: { ideal: 1080 } },
-            audio: false
-        });
+        const stream = await navigator.mediaDevices.getUserMedia(getCameraConstraints());
         state.stream = stream;
         cameraFeed.srcObject = stream;
     } catch (err) {
@@ -120,6 +146,21 @@ async function startCamera() {
         alert("カメラの起動に失敗しました。");
     }
 }
+
+// Monitor orientation changes
+let lastOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+
+window.addEventListener('resize', () => {
+    // Only restart if we are in camera view
+    if (!screens.camera.classList.contains('active')) return;
+
+    const currentOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+    if (currentOrientation !== lastOrientation) {
+        lastOrientation = currentOrientation;
+        // Restart camera to adjust FOV
+        startCamera();
+    }
+});
 
 // 3. Controls Logic
 function updateOverlayStyle() {

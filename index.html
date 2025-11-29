@@ -4,14 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>AR Camera "With"</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./style-detailed.css">
-  <link rel="stylesheet" href="./style-divider.css">
   <link rel="stylesheet" href="./style-flash.css">
 </head>
 
@@ -20,127 +23,203 @@
     <!-- Landing / Upload Screen -->
     <section id="landing" class="screen active">
       <div class="landing-scroll-container">
-        <div class="landing-bg">
-          <div class="orb orb-1"></div>
-          <div class="orb orb-2"></div>
-        </div>
-
-        <div class="content">
-          <div class="logo-container">
-            <div class="logo-decoration"></div>
-            <h2 class="sup-title">AR CAMERA</h2>
-            <h1 class="brand-name">With</h1>
+        <!-- Header -->
+        <header class="site-header">
+          <div class="header-logo">
+            <span class="logo-icon">📸</span>
+            <span class="logo-text">AR Camera <strong>With</strong></span>
           </div>
-
-          <p class="tagline">お気に入りと、今を重ねて。</p>
-
-          <div class="upload-box">
-            <label for="file-input" class="btn primary">
-              <span class="icon">✨</span> 作品を撮る・選ぶ
-            </label>
-            <input type="file" id="file-input" accept="image/*" />
-            <p class="note">写真はデバイス内で安全に処理されます</p>
+          <div class="header-actions">
+            <a href="#" class="nav-link">Login</a>
+            <label for="file-input" class="btn-small">Start</label>
           </div>
+        </header>
 
-          <!-- Divider -->
-          <div class="section-divider"></div>
-
-          <!-- How to Use Section -->
-          <div class="how-to-use detailed">
-            <div class="section-header">
-              <span class="badge">簡単3ステップ</span>
-              <h2 class="section-title">使い方</h2>
-              <p class="section-subtitle">AIが自動で背景を切り抜き、お気に入りの作品との思い出を作れます</p>
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="hero-content">
+            <span class="hero-badge">New Release</span>
+            <h1 class="hero-title">お気に入りと、<br>今を重ねて。</h1>
+            <p class="hero-description">
+              お子様の描いた絵や、お気に入りの写真をARで現実世界に重ねて撮影。<br>
+              新しい思い出の形を、今すぐ体験しよう。
+            </p>
+            <div class="hero-buttons">
+              <label for="file-input" class="btn primary-orange">
+                今すぐ始める
+              </label>
+              <button class="btn secondary-outline">もっと見る</button>
             </div>
-
-            <div class="steps-container">
-              <!-- Step 1 -->
-              <div class="step-card">
-                <div class="step-number">
-                  <span>01</span>
-                </div>
-                <div class="step-content">
-                  <div class="step-header">
-                    <div class="step-icon">🖼️</div>
-                    <h3 class="step-title">作品・写真を選択</h3>
-                  </div>
-                  <p class="step-description">
-                    お子様の描いた絵や、お気に入りの写真をアップロードします。対象がはっきり写っている写真がおすすめです。
-                  </p>
-                  <ul class="step-tips">
-                    <li>✓ 背景がシンプルな写真が最適</li>
-                    <li>✓ 作品が中心に写っている写真</li>
-                    <li>✓ JPG、PNG形式に対応</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Step 2 -->
-              <div class="step-card">
-                <div class="step-number">
-                  <span>02</span>
-                </div>
-                <div class="step-content">
-                  <div class="step-header">
-                    <div class="step-icon">✨</div>
-                    <h3 class="step-title">AI自動切り抜き</h3>
-                  </div>
-                  <p class="step-description">
-                    最新のAI技術が自動で背景を除去。数秒で透過画像が完成します。
-                  </p>
-                  <ul class="step-tips">
-                    <li>✓ 高精度なAI処理</li>
-                    <li>✓ 完全にブラウザ内で処理</li>
-                    <li>✓ 写真は外部に送信されません</li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Step 3 -->
-              <div class="step-card">
-                <div class="step-number">
-                  <span>03</span>
-                </div>
-                <div class="step-content">
-                  <div class="step-header">
-                    <div class="step-icon">📸</div>
-                    <h3 class="step-title">AR撮影</h3>
-                  </div>
-                  <p class="step-description">
-                    カメラが起動したら、切り抜いた作品を好きな場所に配置して、今の風景と一緒に撮影！
-                  </p>
-                  <ul class="step-tips">
-                    <li>✓ ドラッグで自由に移動</li>
-                    <li>✓ ピンチで拡大・縮小</li>
-                    <li>✓ サイズ・透明度を調整可能</li>
-                  </ul>
-                </div>
-              </div>
+            <div class="hero-trust">
+              <span class="trust-item">✅ 会員登録不要</span>
+              <span class="trust-item">⚡️ 即座に生成</span>
             </div>
-
-            <!-- Additional Features -->
-            <div class="features-section">
-              <h3 class="features-title">便利な機能</h3>
-              <div class="features-grid">
-                <div class="feature-item">
-                  <span class="feature-icon">🎨</span>
-                  <h4>細かい調整</h4>
-                  <p>サイズ、透明度、背景の白さを自由に調整</p>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">🔒</span>
-                  <h4>プライバシー保護</h4>
-                  <p>すべての処理はブラウザ内で完結</p>
-                </div>
-                <div class="feature-item">
-                  <span class="feature-icon">💾</span>
-                  <h4>高画質保存</h4>
-                  <p>撮影した写真を高画質で保存可能</p>
+            <!-- Hidden Input for App Logic -->
+            <input type="file" id="file-input" accept="image/*" style="display: none;" />
+          </div>
+          <div class="hero-image">
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <div class="mockup-content">
+                  <div class="mockup-icon">🖼️</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+          <h3 class="stats-title">多くの方にご利用いただいています</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">50,000+</div>
+              <div class="stat-label">利用者数</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200,000+</div>
+              <div class="stat-label">生成されたAR</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">満足度</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- How to Use -->
+        <section class="how-to-section">
+          <div class="section-header">
+            <span class="section-tag">簡単3ステップ</span>
+            <h2 class="section-title">使い方</h2>
+            <p class="section-subtitle">誰でも簡単に、数秒でARカメラ体験が始まります</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-badge">01</div>
+              <div class="step-icon">🖼️</div>
+              <h3>作品を選択</h3>
+              <p>お子様の描いた絵や、推しの写真をアップロード。スマホの中の写真でOK。</p>
+              <ul class="step-check">
+                <li>写真を選ぶだけ</li>
+                <li>面倒な登録なし</li>
+              </ul>
+            </div>
+            <div class="step-card">
+              <div class="step-badge">02</div>
+              <div class="step-icon">✨</div>
+              <h3>自動切り抜き</h3>
+              <p>AIが自動で背景を切り抜きます。面倒な作業は一切不要です。</p>
+              <ul class="step-check">
+                <li>高精度AI</li>
+                <li>数秒で完了</li>
+              </ul>
+            </div>
+            <div class="step-card">
+              <div class="step-badge">03</div>
+              <div class="step-icon">📸</div>
+              <h3>AR撮影</h3>
+              <p>現実世界に重ねて撮影！サイズや透明度も自由に調整できます。</p>
+              <ul class="step-check">
+                <li>自由に配置</li>
+                <li>思い出を保存</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- AR Demo Image -->
+        <section class="ar-demo-section">
+          <div class="section-header">
+            <h2 class="section-title">AR体験のイメージ</h2>
+            <p class="section-subtitle">どんな場所でも、あなたの「好き」と一緒に撮影できます</p>
+          </div>
+          <div class="demo-image-container">
+            <div class="demo-placeholder">
+              <div class="demo-icon">🌄</div>
+              <p>AR Camera Experience</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+          <div class="section-header">
+            <h2 class="section-title">ユーザーの声</h2>
+            <p class="section-subtitle">実際に体験された方々の感想をご紹介します</p>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="comment">「子供の絵と一緒に旅行できて、すごく楽しい！普通の写真が特別になります。」</p>
+              <div class="user-info">
+                <strong>高橋 さやか</strong>
+                <span>主婦</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="comment">「推しのアクスタを持ち歩かなくても、これならいつでも一緒。最高です。」</p>
+              <div class="user-info">
+                <strong>鈴木 健太</strong>
+                <span>大学生</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="comment">「操作が簡単で、親世代でもすぐに使えました。孫の写真で遊んでいます。」</p>
+              <div class="user-info">
+                <strong>佐藤 明子</strong>
+                <span>フリーランス</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features-section">
+          <h2 class="section-title">便利な機能</h2>
+          <p class="section-subtitle">シンプルながらも、こだわりの機能を搭載</p>
+          <div class="features-row">
+            <div class="feature-box">
+              <div class="feature-icon-circle">🎨</div>
+              <h3>細かい調整</h3>
+              <p>サイズ、透明度、位置を自由に調整可能</p>
+            </div>
+            <div class="feature-box">
+              <div class="feature-icon-circle">🔒</div>
+              <h3>プライバシー保護</h3>
+              <p>データは端末内で処理。安心安全です</p>
+            </div>
+            <div class="feature-box">
+              <div class="feature-icon-circle">💾</div>
+              <h3>高画質保存</h3>
+              <p>思い出を綺麗なまま保存できます</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <section class="bottom-cta">
+          <h2>今すぐ始めてみませんか？</h2>
+          <p>登録不要、完全無料でご利用いただけます。<br>あなたの思い出を、もっと特別に。</p>
+          <label for="file-input" class="btn primary-white">
+            AR Cameraを試してみる
+          </label>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+          <div class="footer-content">
+            <div class="footer-logo">📸 AR Camera With</div>
+            <div class="footer-links">
+              <a href="#">利用規約</a>
+              <a href="#">プライバシーポリシー</a>
+              <a href="#">お問い合わせ</a>
+            </div>
+          </div>
+          <div class="copyright">© 2024 AR Camera With. All rights reserved.</div>
+        </footer>
       </div>
     </section>
 
